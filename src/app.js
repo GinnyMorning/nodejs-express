@@ -1,18 +1,18 @@
-import express from 'express';
-import xss from 'xss-clean';
-import helmet from 'helmet';
-import compression from 'compression';
-import cors from 'cors';
-import passport from 'passport';
+const express = require('express');
+const xss = require('xss-clean');
+const helmet = require('helmet');
+const compression = require('compression');
+const cors = require('cors');
+const passport = require('passport');
+const httpStatus = require('http-status');
 
-import httpStatus from 'http-status';
-import routes from './routes';
-import morgan from './config/morgan';
-import configs from './config/configs';
-import jwtStratergy from './config/passport';
-import authLimiter from './middlewares/authLimiter';
-import ApiError from './ultils/ApiError';
-import errorConverter from './middlewares/error';
+const routes = require('./routes');
+const morgan = require('./config/morgan');
+const configs = require('./config/configs');
+const jwtStratergy = require('./config/passport');
+const authLimiter = require('./middlewares/authLimiter');
+const ApiError = require('./ultils/ApiError');
+const { errorConverter, errorHandler } = require('./middlewares/error');
 
 const app = express();
 
@@ -24,6 +24,7 @@ if (configs.env !== 'test') {
 }
 
 // set sercurity HTTP header
+
 app.use(helmet());
 
 // parse json request body
@@ -44,7 +45,7 @@ app.options('*', cors());
 
 // jwt authentication
 app.use(passport.initialize());
-app.use('jwt', jwtStratergy);
+passport.use('jwt', jwtStratergy);
 
 // limit repeat failed requiest to auth endponts
 if (configs.env === 'production') {
@@ -56,10 +57,13 @@ app.use('/v1', routes);
 
 // send back 404 error for any unknown api request
 app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, 'Not Found'));
+  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
 });
 
 // convert error to ApiError, if needed
 app.use(errorConverter);
+
+// handle errror
+app.use(errorHandler);
 
 module.exports = app;

@@ -1,2 +1,2 @@
-export { User } from './User';
-export { Auth } from './Auth';
+module.exports.User = require('./User');
+module.exports.Auth = require('./Auth');

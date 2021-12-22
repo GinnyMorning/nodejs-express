@@ -7,7 +7,7 @@ morgan.token('message', (req, res) => res.locals.errorMessage || '');
 const getIpFormat = () => (config.env === 'production' ? ':remote-addr - ' : '');
 
 const successResonseFormat = `${getIpFormat()}:method :url :status - :response-time ms`;
-const errorResponseFormat = `${getIpFormat()}:method :url :status - :respone-time-ms - message: "message`;
+const errorResponseFormat = `${getIpFormat()}:method :url :status - :response-time ms - message: :message`;
 
 const successHandler = morgan(successResonseFormat, {
   skip: (req, res) => res.statusCode >= 400,

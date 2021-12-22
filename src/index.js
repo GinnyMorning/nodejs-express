@@ -1,4 +1,4 @@
-import logger from './config/logger';
+const logger = require('./config/logger');
 
 const app = require('./app');
 
@@ -12,12 +12,14 @@ const exitHandler = () => {
       logger.warn('Close server');
       process.exit(1);
     });
+  } else {
+    process.exit(1);
   }
 };
 
 // eslint-disable-next-line no-unused-vars
 const unexpectedErrorHandler = (err) => {
-  logger.warn('Exit!!');
+  logger.error(err);
   exitHandler();
 };
 
