@@ -6,13 +6,8 @@ services:
     image: node-app
     depends_on:
       - "postgres"
-    environment:
-      DB_USER: postgres
-      DB_PASSWORD: mypostgres
-      POSTGRES_DB: mydb
-      DATABASE_URL: postgres://postgres:mypostgres@postgres/mydb
     ports:
-      - '3000:3000'
+      - ${PORT}:${PORT}
     volumes:
       - .:/usr/src/node-app
     networks:
