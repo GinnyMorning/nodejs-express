@@ -7,9 +7,9 @@ const router = express.Router();
 router.route('/').get((req, res) => {
   res.send('Hello world from user');
 });
-router.get('/test', (req, res) => {
+router.get('/test', async (req, res) => {
   try {
-    db.authenticate();
+    await db.authenticate();
     logger.info('Connection has been established successfully.');
     res.send('OK');
   } catch (err) {
