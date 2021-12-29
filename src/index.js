@@ -4,7 +4,7 @@ const configs = require('./config/configs');
 const app = require('./app');
 
 const server = app.listen(configs.port, () => {
-  logger.warn(`App connected on port: ${configs.port}`);
+  logger.info(`App connected on port: ${configs.port}`);
 });
 
 const exitHandler = () => {
