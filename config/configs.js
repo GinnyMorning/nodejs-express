@@ -28,14 +28,6 @@ if (error) {
 module.exports = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
-  // database: {
-  //   url: envVars.DATABASE_URL + (envVars.NODE_ENV === 'test' ? '-testdb' : ''),
-  //   options: {
-  //     useCreateIndex: true,
-  //     useNewUrlParser: true,
-  //     useUnifiedTopology: true,
-  //   },
-  // },
   database: {
     database: envVars.D_NAME,
     username: envVars.D_USERNAME,

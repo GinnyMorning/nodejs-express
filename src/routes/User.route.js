@@ -1,12 +1,13 @@
 const express = require('express');
-const db = require('../data/config/database');
-const logger = require('../config/logger');
+const db = require('../../data/config/connectDatabase');
+const logger = require('../../config/logger');
 
 const router = express.Router();
 
 router.route('/').get((req, res) => {
   res.send('Hello world from user');
 });
+
 router.get('/test', async (req, res) => {
   try {
     await db.authenticate();

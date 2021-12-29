@@ -1,7 +1,7 @@
 const httpStatus = require('http-status');
-const configs = require('../config/configs');
-const logger = require('../config/logger');
-const ApiError = require('../ultils/ApiError');
+const configs = require('../../config/configs');
+const logger = require('../../config/logger');
+const ApiError = require('../../ultils/ApiError');
 
 const errorConverter = (err, req, res, next) => {
   let error = err;

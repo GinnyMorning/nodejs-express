@@ -7,11 +7,11 @@ const passport = require('passport');
 const httpStatus = require('http-status');
 
 const routes = require('./routes');
-const morgan = require('./config/morgan');
-const configs = require('./config/configs');
-const jwtStratergy = require('./config/passport');
+const morgan = require('../config/morgan');
+const configs = require('../config/configs');
+const jwtStratergy = require('../config/passport');
 const { authLimiter } = require('./middlewares/authLimiter');
-const ApiError = require('./ultils/ApiError');
+const ApiError = require('../ultils/ApiError');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 
 const app = express();
