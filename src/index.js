@@ -1,9 +1,10 @@
 const logger = require('./config/logger');
+const configs = require('./config/configs');
 
 const app = require('./app');
 
-const server = app.listen(3000, () => {
-  logger.warn('App connected on port 3000');
+const server = app.listen(configs.port, () => {
+  logger.info(`App connected on port: ${configs.port}`);
 });
 
 const exitHandler = () => {
