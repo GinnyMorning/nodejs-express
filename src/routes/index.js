@@ -1,10 +1,10 @@
 const express = require('express');
-const userRoute = require('./User.route');
-const authRoute = require('./Auth.route');
+const userRoute = require('./user.route');
+const authRoute = require('./auth.route');
 
 const routes = express.Router();
 
-routes.use('/user', userRoute);
 routes.use('/auth', authRoute);
+routes.use('/user', userRoute);
 
 module.exports = routes;
