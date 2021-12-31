@@ -20,7 +20,8 @@
     "prettier:fix": "prettier --write **/*.js",
     "docker:prod": "docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up",
     "docker:dev": "docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build",
-    "docker:test": "docker-compose -f docker-compose.yaml -f docker-compose.test.yaml up"
+    "docker:test": "docker-compose -f docker-compose.yaml -f docker-compose.test.yaml up",
+    "prepare": "husky install"
   },
   "keywords": [
     "node",
@@ -81,7 +82,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-security": "^1.4.0",
     "faker": "^5.1.0",
-    "husky": "^7.0.4",
+    "husky": "^7.0.0",
     "jest": "^27.4.5",
     "lint-staged": "^12.1.4",
     "node-mocks-http": "^1.8.0",
